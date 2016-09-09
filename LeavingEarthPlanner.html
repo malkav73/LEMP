@@ -1,0 +1,741 @@
+<html>
+
+<head>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		td[class=FromTo] {
+			text-align: left;
+		}
+
+		input {
+			width: 4em;
+			text-align: center;
+		}
+	</style>
+	<title>Leaving Earth Mission Planner</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.min.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<script>
+		var places = [
+			"",
+			"Callisto",
+			"Ceres",
+			"Earth",
+			"Earth Orbit",
+			"Enceladus",
+			"Europa",
+			"Ganymede",
+			"Ganymede Orbit",
+			"Inner Planets Transfer",
+			"Io",
+			"Jupiter Fly-By",
+			"Jupiter Orbit",
+			"Lunar Fly-By",
+			"Lunar Orbit",
+			"Mars",
+			"Mars Fly-By",
+			"Mars Orbit",
+			"Mercury",
+			"Mercury Fly-By",
+			"Mercury Orbit",
+			"Moon",
+			"Neptune Fly-By",
+			"Outer Planets Transfer",
+			"Phobos",
+			"Saturn Fly-By",
+			"Saturn Orbit",
+			"Sub-Orbital Flight",
+			"Titan",
+			"Titan Orbit",
+			"Uranus Fly-By",
+			"Venus",
+			"Venus Orbit",
+			"Venus Fly-By"
+		];
+		var dest1 = [
+			"",
+			"Jupiter Fly-By",
+			"Jupiter Orbit"
+		];
+		var dest2 = [
+			"",
+			"Inner Planets Transfer",
+			"Outer Planets Transfer"
+		];
+		var dest3 = [
+			"",
+			"Earth Orbit",
+			"Sub-Orbital Flight"
+		];
+		var dest4 = [
+			"",
+			"Earth",
+			"Inner Planets Transfer",
+			"Lunar Fly-By",
+			"Lunar Orbit",
+			"Mars Fly-By",
+			"Mars Orbit",
+			"Outer Planets Transfer"
+		];
+		var dest5 = [
+			"",
+			"Saturn Orbit"
+		];
+		var dest6 = [
+			"",
+			"Jupiter Orbit"
+		];
+		var dest7 = [
+			"",
+			"Ganymede Orbit"
+		];
+		var dest8 = [
+			"",
+			"Ganymede",
+			"Jupiter Orbit"
+		];
+		var dest9 = [
+			"",
+			"Ceres",
+			"Earth Orbit",
+			"Mars Orbit",
+			"Mercury Fly-By",
+			"Venus Fly-By",
+			"Venus Orbit",
+			"Lost"
+		];
+		var dest10 = [
+			"",
+			"Jupiter Orbit"
+		];
+		var dest11 = [
+			"",
+			"Jupiter Orbit",
+			"Jupiter Orbit (Aerobraking)",
+			"Outer Planets Transfer",
+			"Saturn Fly-By (Slingshot)",
+			"Lost"
+		];
+		var dest12 = [
+			"",
+			"Callisto",
+			"Europa",
+			"Ganymede Orbit",
+			"Io",
+			"Jupiter Fly-By"
+		];
+		var dest13 = [
+			"",
+			"Earth Orbit",
+			"Lunar Orbit",
+			"Moon",
+			"Lost"
+		];
+		var dest14 = [
+			"",
+			"Earth Orbit",
+			"Moon"
+		];
+		var dest15 = [
+			"",
+			"Mars Orbit"
+		];
+		var dest16 = [
+			"",
+			"Jupiter Fly-By (Slingshot)",
+			"Mars",
+			"Mars Orbit",
+			"Mars Orbit (Aerobraking)",
+			"Lost"
+		];
+		var dest17 = [
+			"",
+			"Earth Orbit",
+			"Inner Planets Transfer",
+			"Mars",
+			"Outer Planets Transfer",
+			"Phobos"
+		];
+		var dest18 = [
+			"",
+			"Mercury Orbit"
+		];
+		var dest19 = [
+			"",
+			"Mercury",
+			"Mercury Orbit",
+			"Lost"
+		];
+		var dest20 = [
+			"",
+			"Inner Planets Transfer",
+			"Mercury"
+		];
+		var dest21 = [
+			"",
+			"Lunar Orbit"
+		];
+		var dest22 = [
+			"",
+			"Lost"
+		];
+		var dest23 = [
+			"",
+			"Ceres",
+			"Earth Orbit",
+			"Earth Orbit (Aerobraking)",
+			"Jupiter Fly-By (Slingshot)",
+			"Mars Orbit",
+			"Mars Orbit (Aerobraking)",
+			"Saturn Fly-By (Slingshot)",
+			"Uranus Fly-By (Slingshot)",
+			"Lost"
+		];
+		var dest24 = [
+			"",
+			"Mars Orbit"
+		];
+		var dest25 = [
+			"",
+			"Outer Planets Transfer",
+			"Saturn Orbit",
+			"Saturn Orbit (Aerobraking)",
+			"Uranus Fly-By (Slingshot)",
+			"Lost"
+		];
+		var dest26 = [
+			"",
+			"Enceladus",
+			"Saturn Fly-By",
+			"Titan Orbit",
+			"Titan Orbit (Aerobraking)"
+		];
+		var dest27 = [
+			"",
+			"Earth",
+			"Earth Orbit"
+		];
+		var dest28 = [
+			"",
+			"Titan Orbit"
+		];
+		var dest29 = [
+			"",
+			"Saturn Orbit",
+			"Titan"
+		];
+		var dest30 = [
+			"",
+			"Neptune Fly-By (Slingshot)",
+			"Outer Planets Transfer",
+			"Lost"
+		];
+		var dest31 = [
+			"",
+			"Venus Orbit"
+		];
+		var dest32 = [
+			"",
+			"Inner Planets Transfer",
+			"Outer Planets Transfer",
+			"Venus"
+		];
+		var dest33 = [
+			"",
+			"Jupiter Fly-By (Slingshot)",
+			"Venus",
+			"Venus Orbit",
+			"Venus Orbit (Aerobraking)",
+			"Lost"
+		];
+		var maneuvers = [
+			"",
+			"Callisto to Jupiter Fly-By",
+			"Callisto to Jupiter Orbit",
+			"Ceres to Inner Planets Transfer",
+			"Ceres to Outer Planets Transfer",
+			"Earth Orbit to Earth",
+			"Earth Orbit to Inner Planets Transfer",
+			"Earth Orbit to Lunar Fly-By",
+			"Earth Orbit to Lunar Orbit",
+			"Earth Orbit to Mars Fly-By",
+			"Earth Orbit to Mars Orbit",
+			"Earth Orbit to Outer Planets Transfer",
+			"Earth to Earth Orbit",
+			"Earth to Sub-Orbital Flight",
+			"Enceladus to Saturn Orbit",
+			"Europa to Jupiter Orbit",
+			"Ganymede Orbit to Ganymede",
+			"Ganymede Orbit to Jupiter Orbit",
+			"Ganymede to Ganymede Orbit",
+			"Inner Planets Transfer to Ceres",
+			"Inner Planets Transfer to Earth Orbit",
+			"Inner Planets Transfer to Lost",
+			"Inner Planets Transfer to Mars Orbit",
+			"Inner Planets Transfer to Mercury Fly-By",
+			"Inner Planets Transfer to Venus Fly-By",
+			"Inner Planets Transfer to Venus Orbit",
+			"Io to Jupiter Orbit",
+			"Jupiter Fly-By to Jupiter Orbit",
+			"Jupiter Fly-By to Jupiter Orbit (Aerobraking)",
+			"Jupiter Fly-By to Lost",
+			"Jupiter Fly-By to Outer Planets Transfer",
+			"Jupiter Fly-By to Saturn Fly-By (Slingshot)",
+			"Jupiter Orbit to Callisto",
+			"Jupiter Orbit to Europa",
+			"Jupiter Orbit to Ganymede Orbit",
+			"Jupiter Orbit to Io",
+			"Jupiter Orbit to Jupiter Fly-By",
+			"Lunar Fly-By to Earth Orbit",
+			"Lunar Fly-By to Lost",
+			"Lunar Fly-By to Lunar Orbit",
+			"Lunar Fly-By to Moon",
+			"Lunar Orbit to Earth Orbit",
+			"Lunar Orbit to Moon",
+			"Mars Fly-By to Jupiter Fly-By (Slingshot)",
+			"Mars Fly-By to Lost",
+			"Mars Fly-By to Mars",
+			"Mars Fly-By to Mars Orbit",
+			"Mars Fly-By to Mars Orbit (Aerobraking)",
+			"Mars Orbit to Earth Orbit",
+			"Mars Orbit to Inner Planets Transfer",
+			"Mars Orbit to Mars",
+			"Mars Orbit to Outer Planets Transfer",
+			"Mars Orbit to Phobos",
+			"Mars to Mars Orbit",
+			"Mercury Fly-By to Lost",
+			"Mercury Fly-By to Mercury",
+			"Mercury Fly-By to Mercury Orbit",
+			"Mercury Orbit to Inner Planets Transfer",
+			"Mercury Orbit to Mercury",
+			"Mercury to Mercury Orbit",
+			"Moon to Lunar Orbit",
+			"Neptune Fly-By to Lost",
+			"Outer Planets Transfer to Ceres",
+			"Outer Planets Transfer to Earth Orbit",
+			"Outer Planets Transfer to Earth Orbit (Aerobraking)",
+			"Outer Planets Transfer to Jupiter Fly-By (Slingshot)",
+			"Outer Planets Transfer to Lost",
+			"Outer Planets Transfer to Mars Orbit",
+			"Outer Planets Transfer to Mars Orbit (Aerobraking)",
+			"Outer Planets Transfer to Saturn Fly-By (Slingshot)",
+			"Outer Planets Transfer to Uranus Fly-By (Slingshot)",
+			"Phobos to Mars Orbit",
+			"Saturn Fly-By to Lost",
+			"Saturn Fly-By to Outer Planets Transfer",
+			"Saturn Fly-By to Saturn Orbit",
+			"Saturn Fly-By to Saturn Orbit (Aerobraking)",
+			"Saturn Fly-By to Uranus Fly-By (Slingshot)",
+			"Saturn Orbit to Enceladus",
+			"Saturn Orbit to Saturn Fly-By",
+			"Saturn Orbit to Titan",
+			"Saturn Orbit to Titan Orbit",
+			"Saturn Orbit to Titan Orbit (Aerobraking)",
+			"Sub-Orbital Flight to Earth",
+			"Sub-Orbital Flight to Earth Orbit",
+			"Titan Orbit to Saturn Orbit",
+			"Titan Orbit to Titan",
+			"Titan to Titan Orbit",
+			"Uranus Fly-By to Lost",
+			"Uranus Fly-By to Neptune Fly-By (Slingshot)",
+			"Uranus Fly-By to Outer Planets Transfer",
+			"Venus Fly-By to Jupiter Fly-By (Slingshot)",
+			"Venus Fly-By to Lost",
+			"Venus Fly-By to Venus",
+			"Venus Fly-By to Venus Orbit",
+			"Venus Fly-By to Venus Orbit (Aerobraking)",
+			"Venus Orbit to Inner Planets Transfer",
+			"Venus Orbit to Outer Planets Transfer",
+			"Venus Orbit to Venus",
+			"Venus to Venus Orbit"
+		];
+		var difficulties = [0, 5, 5, 5, 3, 0, 3, 1, 3, 3, 5, 6, 8, 3, 2, 2, 2, 3,
+			2, 5, 3, "Auto EOY", 4, 5, 2, 3, 2, 10, 3, "Auto EOY", 4, 0, 5, 2, 3, 2,
+			10, 1, "Auto EOY", 2, 4, 3, 2, 4, "Auto EOY", 3, 3, 1, 5, 4, 0, 5, 1, 3,
+			"Auto EOY", 4, 2, 7, 2, 2, 2, "Auto EOY", 3, 6, 1, 4, "Auto EOY", 5, 2,
+			3, 4, 1, "Auto EOY", 3, 7, 1, 0, 2, 7, 1, 2, 1, "Auto EOT", 5, 2, 0, 2,
+			"Auto EOT", 0, 4, 1, "Auto EOT", 1, 1, 0, 3, 9, 0, 6
+		];
+		var timesNeeded = [0, 0, "opt.", 2, 1, 0, 1, "opt.", "opt.", 3, 3, 1, 0, 0,
+			"opt.", "opt.", 0, "opt.", 0, 1, 1, 0, 2, 1, 1, 1, "opt.", "opt.", 0, 0,
+			2, 2, "opt.", "opt.", "opt.", "opt.", "opt.", "opt.", 0, "opt.", 0,
+			"opt.", 0, 3, 0, 0, "opt.", 0, 3, 2, 0, 1, "opt.", 0, 0, 0, "opt.", 1, 0,
+			0, 0, 0, 1, 1, 1, 2, 0, 1, 1, 3, 9, "opt.", 0, 3, "opt.", 0, 5, "opt.",
+			"opt.", 0, "opt.", 0, 0, 0, "opt.", 0, 0, 0, 4, 9, 1, 0, 0, "opt.", 0, 1,
+			1, 0, 0
+		];
+		var multiples = ["1x", "2x", "4x"];
+		var equipment = [
+			" ",
+			"Juno Rocket",
+			"Atlas Rocket",
+			"Proton Rocket",
+			"Soyuz Rocket",
+			"Saturn Rocket",
+			"Ion Thruster",
+			"Probe",
+			"Galileo Probe",
+			"Explorer Payload",
+			"Vostok Capsule",
+			"Apollo Capsule",
+			"Eagle Capsule",
+			"Aldrin Capsule",
+			"Astronaut",
+			"Supplies",
+			"Samples"
+		];
+		var masses = [0, 1, 4, 6, 9, 20, 1, 1, 2, 1, 2, 3, 1, 3, 0, 1, 1];
+		var thrusts = [0, 4, 27, 70, 80, 200, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		var costs = [0, 1, 5, 12, 8, 15, 10, 2, 5, 3, 2, 4, 4, 4, 5, 1, 0];
+		var rows = 16;
+		var compact = 0;
+
+		function formReset() {
+			document.getElementById("mainForm").reset();
+		};
+
+		function fill(thing, contents) {
+			for (var i = 0; i < rows; i++) {
+				var $thing = document.getElementById(thing + i);
+				for (var n = 0; n < contents.length; n++) {
+					var option = document.createElement("option");
+					option.value = contents[n];
+					option.text = contents[n];
+					$thing.add(option);
+				};
+			};
+		};
+
+		function fillDestination(n) {
+			var $Destination = document.getElementById("Destination" + n);
+			$Destination.innerHTML = "";
+			var $Origin = document.getElementById("Origin" + n);
+			var $list = eval("dest" + places.indexOf($Origin.value));
+			for (var i = 0; i < $list.length; i++) {
+				var option = document.createElement("option");
+				option.value = $list[i];
+				option.text = $list[i];
+				$Destination.add(option);
+			};
+		};
+
+		function generatemaneuver() {
+			for (var i = 0; i < rows; i++) {
+				var $Origin = document.getElementById("Origin" + i);
+				var $Destination = document.getElementById("Destination" + i);
+				var $Maneuver = document.getElementById("Maneuver" + i);
+				$Maneuver.innerHTML = "";
+				if ($Origin.value != "" && $Destination.value != "") {
+					$Maneuver.innerHTML = $Origin.value + " to " + $Destination.value;
+				};
+				var indexM = maneuvers.indexOf($Maneuver.innerHTML);
+				var $Difficulty = document.getElementById("Difficulty" + i);
+				$Difficulty.innerHTML = difficulties[indexM];
+				var $TimeNeeded = document.getElementById("TimeNeeded" + i);
+				var TimeNeeded = timesNeeded[indexM];
+				$TimeNeeded.innerHTML = TimeNeeded;
+				var $DifficultyMultiplier = document.getElementById("DifficultyMultiplier" + i);
+				if ($Maneuver.innerHTML.search("Slingshot") > 0) {
+					$DifficultyMultiplier.remove(1);
+					$DifficultyMultiplier.remove(1);
+				} else if (TimeNeeded == "opt.") {
+					$DifficultyMultiplier.remove(1);
+					$DifficultyMultiplier.remove(1);
+				} else if (TimeNeeded == 1) {
+					$DifficultyMultiplier.remove(1);
+					$DifficultyMultiplier.remove(1);
+				} else if (TimeNeeded == 0 && indexM > 0) {
+					$DifficultyMultiplier.remove(1);
+					$DifficultyMultiplier.remove(1);
+				};
+			};
+		};
+
+		function calculate() {
+			var TotalMass = 0;
+			var TotalCost = 0;
+			for (var i = 0; i < rows; i++) {
+				var $Maneuver = document.getElementById("Maneuver" + i);
+				var indexM = maneuvers.indexOf($Maneuver.innerHTML);
+				var $Difficulty = document.getElementById("Difficulty" + i);
+				var Difficulty = difficulties[indexM];
+				var $DifficultyMultiplier = document.getElementById("DifficultyMultiplier" + i);
+				var DifficultyMultiplier = $DifficultyMultiplier.value;
+				var $TimeNeeded = document.getElementById("TimeNeeded" + i);
+				var TimeNeeded = timesNeeded[indexM];
+				if (DifficultyMultiplier == "4x") {
+					Difficulty *= 4;
+					$Difficulty.innerHTML = Difficulty;
+					TimeNeeded = Math.ceil(TimeNeeded / 4);
+					$TimeNeeded.innerHTML = TimeNeeded;
+				} else if (DifficultyMultiplier == "2x") {
+					Difficulty *= 2;
+					$Difficulty.innerHTML = Difficulty;
+					TimeNeeded = Math.ceil(TimeNeeded / 2);
+					$TimeNeeded.innerHTML = TimeNeeded;
+				} else if (DifficultyMultiplier == "1x") {
+					$Difficulty.innerHTML = Difficulty;
+					$TimeNeeded.innerHTML = TimeNeeded;
+				};
+				var $TimeTaken = document.getElementById("TimeTaken" + i);
+				if (TimeNeeded == 0 || $Maneuver.innerHTML.search("Slingshot") > 0) {
+					$TimeTaken.value = TimeNeeded;
+					$TimeTaken.min = TimeNeeded;
+					$TimeTaken.max = TimeNeeded;
+				} else if (TimeNeeded > 0) {
+					$TimeTaken.min = TimeNeeded;
+					$TimeTaken.max = 50;
+				} else if (TimeNeeded == "opt.") {
+					$TimeTaken.min = 0;
+					$TimeTaken.max = 50;
+				};
+				var $ComponentA = document.getElementById("ComponentA" + i);
+				var indexA = equipment.indexOf($ComponentA.value);
+				var $QtyA = document.getElementById("QtyA" + i);
+				var $ComponentB = document.getElementById("ComponentB" + i);
+				var indexB = equipment.indexOf($ComponentB.value);
+				var $QtyB = document.getElementById("QtyB" + i);
+				var $TotalMass = document.getElementById("TotalMass" + i);
+				var massA = masses[indexA];
+				var massB = masses[indexB];
+				TotalMass += (massA * $QtyA.value) + (massB * $QtyB.value);
+				$TotalMass.innerHTML = TotalMass;
+				var $Thrust = document.getElementById("Thrust" + i);
+				var thrustA = thrusts[indexA];
+				if ($ComponentA.value == "Ion Thruster") {
+					thrustA *= $TimeTaken.value;
+				};
+				var thrustB = thrusts[indexB];
+				if ($ComponentB.value == "Ion Thruster") {
+					thrustB *= $TimeTaken.value;
+				};
+				var Thrust = (thrustA * $QtyA.value) + (thrustB * $QtyB.value);
+				$Thrust.innerHTML = Thrust;
+				var $ThrustNeeded = document.getElementById("ThrustNeeded" + i);
+				var ThrustNeeded = Difficulty * TotalMass;
+				if (Difficulty == "Auto EOT" || Difficulty == "Auto EOY") {
+					ThrustNeeded = 0;
+				};
+				$ThrustNeeded.innerHTML = ThrustNeeded;
+				var $TotalCost = document.getElementById("TotalCost" + i);
+				var costA = costs[indexA];
+				var costB = costs[indexB];
+				TotalCost += (costA * $QtyA.value) + (costB * $QtyB.value);
+				$TotalCost.innerHTML = TotalCost;
+				var $ExcessThrust = document.getElementById("ExcessThrust" + i);
+				$ExcessThrust.innerHTML = Thrust - ThrustNeeded;
+				var $AvailableMass = document.getElementById("AvailableMass" + i);
+				var AvailableMass = Thrust / Difficulty - TotalMass;
+				$AvailableMass.innerHTML = AvailableMass.toFixed(2);
+				if (Difficulty == "Auto EOT" || Difficulty == "Auto EOY" || Difficulty == 0) {
+					$AvailableMass.innerHTML = "infinite";
+				};
+			};
+		};
+
+		function buildTable() {
+			var $tbody = document.getElementById("tbody");
+			for (var i = 0; i < rows; i++) {
+				var $tr = document.createElement('tr');
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "FromTo");
+				var $span = document.createElement('span');
+				$span.innerHTML = "From: ";
+				$td.appendChild($span);
+				var $select = document.createElement('select');
+				$select.setAttribute("id", "Origin" + i);
+				$select.setAttribute("onchange", "fillDestination(" + i + "); generatemaneuver(); calculate();");
+				$td.appendChild($select);
+				var $br = document.createElement('br');
+				$br.setAttribute("class", "break");
+				$td.appendChild($br);
+				var $span = document.createElement('span');
+				$span.innerHTML = " To: ";
+				$td.appendChild($span);
+				var $select = document.createElement('select');
+				$select.setAttribute("id", "Destination" + i);
+				$select.setAttribute("onchange", "generatemaneuver(); calculate();");
+				$td.appendChild($select);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "Maneuver");
+				$td.setAttribute("id", "Maneuver" + i);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "Difficulty");
+				$td.setAttribute("id", "Difficulty" + i);
+				$td.innerHTML = "0";
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "DifficultyMultiplier");
+				var $select = document.createElement('select');
+				$select.setAttribute("id", "DifficultyMultiplier" + i);
+				$select.setAttribute("onchange", "calculate();");
+				$td.appendChild($select);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "TimeNeeded");
+				$td.setAttribute("id", "TimeNeeded" + i);
+				$td.innerHTML = "0";
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "ComponentA");
+				var $select = document.createElement('select');
+				$select.setAttribute("id", "ComponentA" + i);
+				$select.setAttribute("onchange", "calculate();");
+				$td.appendChild($select);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "QtyA");
+				var $input = document.createElement('input');
+				$input.setAttribute("id", "QtyA" + i);
+				$input.setAttribute("value", "0");
+				$input.setAttribute("min", "-50");
+				$input.setAttribute("max", "50");
+				$input.setAttribute("onchange", "calculate();");
+				$input.readOnly = true;
+				$td.appendChild($input);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "ComponentB");
+				var $select = document.createElement('select');
+				$select.setAttribute("id", "ComponentB" + i);
+				$select.setAttribute("onchange", "calculate();");
+				$td.appendChild($select);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "QtyB");
+				var $input = document.createElement('input');
+				$input.setAttribute("id", "QtyB" + i);
+				$input.setAttribute("value", "0");
+				$input.setAttribute("min", "-50");
+				$input.setAttribute("max", "50");
+				$input.setAttribute("onchange", "calculate();");
+				$input.readOnly = true;
+				$td.appendChild($input);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "TimeTaken");
+				var $input = document.createElement('input');
+				$input.setAttribute("id", "TimeTaken" + i);
+				$input.setAttribute("value", "0");
+				$input.setAttribute("min", "0");
+				$input.setAttribute("max", "20");
+				$input.setAttribute("onchange", "calculate();");
+				$input.readOnly = true;
+				$td.appendChild($input);
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "TotalMass");
+				$td.setAttribute("id", "TotalMass" + i);
+				$td.innerHTML = "0";
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "Thrust");
+				$td.setAttribute("id", "Thrust" + i);
+				$td.innerHTML = "0";
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "ThrustNeeded");
+				$td.setAttribute("id", "ThrustNeeded" + i);
+				$td.innerHTML = "0";
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "TotalCost");
+				$td.setAttribute("id", "TotalCost" + i);
+				$td.innerHTML = "0";
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "ExcessThrust");
+				$td.setAttribute("id", "ExcessThrust" + i);
+				$td.innerHTML = "0";
+				$tr.appendChild($td);
+
+				var $td = document.createElement('td');
+				$td.setAttribute("class", "AvailableMass");
+				$td.setAttribute("id", "AvailableMass" + i);
+				$td.innerHTML = "infinite";
+				$tr.appendChild($td);
+
+				$tbody.appendChild($tr);
+
+				jQuery("#QtyA" + i).spinner();
+				jQuery("#QtyB" + i).spinner();
+				jQuery("#TimeTaken" + i).spinner();
+			};
+			//jQuery(".break").toggle();
+		};
+
+		jQuery(document).ready(function() {
+			jQuery("button").click(function() {
+				//jQuery(".break").toggle();
+				jQuery(".Maneuver").toggle();
+				jQuery(".TotalMass").toggle();
+				jQuery(".Thrust").toggle();
+				jQuery(".ThrustNeeded").toggle();
+			});
+		});
+	</script>
+</head>
+
+<body onload="formReset(); buildTable(); fill('Origin', places); fill('ComponentA', equipment); fill('ComponentB', equipment); fill('DifficultyMultiplier', multiples);">
+	<h1>Leaving Earth Mission Planner </h1>
+	<a href="https://dl.dropboxusercontent.com/u/27880871/LeavingEarthPlanner.html">https://dl.dropboxusercontent.com/u/27880871/LeavingEarthPlanner.html</a><br>
+	<a href="http://bit.ly/2bDItrf">http://bit.ly/2bDItrf</a><br>
+	<ul>
+		<li>Plan missions in reverse, starting with the LAST maneuver on the FIRST line, then working backwards (down).</li>
+		<li>Components providing thrust must be on the same line as the maneuver they are used for.</li>
+		<li>Additional non-thrusting components/mass should go on the line above their thruster(s) (with From/To blank).</li>
+	</ul>
+	<button type="button">Hide/Show Extra Info</button>
+	<form id="mainForm" "overflow-x:auto;">
+		<table id="mainTable">
+			<thead>
+				<tr>
+					<th class="FromTo" id="FromTo">From - To</th>
+					<th class="Maneuver" id="Maneuver" style=width:11em>Maneuver</th>
+					<th class="Difficulty" id="Difficulty" style=width:3em>Diff.</th>
+					<th class="DifficultyMultiplier" id="DifficultyMultiplier" style=width:3em>Diff. Mult.</th>
+					<th class="TimeNeeded" id="TimeNeeded" style=width:4em>Time Needed</th>
+					<th class="ComponentA" id="ComponentA" style=width:8em>Component A</th>
+					<th class="QtyA" id="QtyA" style=width:4em>Qty. A</th>
+					<th class="ComponentB" id="ComponentB" style=width:8em>Component B</th>
+					<th class="QtyB" id="QtyB" style=width:4em>Qty. B</th>
+					<th class="TimeTaken" id="TimeTaken" style=width:4em>Time Taken</th>
+					<th class="TotalMass" id="TotalMass" style=width:4em>Total Mass</th>
+					<th class="Thrust" id="Thrust" style=width:4em>Thrust</th>
+					<th class="ThrustNeeded" id="ThrustNeeded" style=width:4em>Thrust Needed</th>
+					<th class="TotalCost" id="TotalCost" style=width:4em>Total Cost</th>
+					<th class="ExcessThrust" id="ExcessThrust" style=width:4em>Excess Thrust</th>
+					<th class="AvailableMass" id="AvailableMass" style=width:5em>Available Mass</th>
+				</tr>
+			</thead>
+			<tbody id="tbody" />
+		</table>
+	</form>
+</body>
+
+</html>
