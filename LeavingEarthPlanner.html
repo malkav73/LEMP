@@ -552,8 +552,8 @@
 				$span.innerHTML = "From: ";
 				$td.appendChild($span);
 				var $select = document.createElement('select');
-				$select.setAttribute("id", "Origin" + i);
 				$select.setAttribute("onchange", "fillDestination(" + i + "); generatemaneuver(); calculate();");
+				$select.setAttribute("id", "Origin" + i);
 				$td.appendChild($select);
 				var $br = document.createElement('br');
 				$br.setAttribute("class", "break");
@@ -562,121 +562,121 @@
 				$span.innerHTML = " To: ";
 				$td.appendChild($span);
 				var $select = document.createElement('select');
-				$select.setAttribute("id", "Destination" + i);
 				$select.setAttribute("onchange", "generatemaneuver(); calculate();");
+				$select.setAttribute("id", "Destination" + i);
 				$td.appendChild($select);
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "Maneuver");
 				$td.setAttribute("id", "Maneuver" + i);
+				$td.setAttribute("class", "Maneuver");
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "Difficulty");
 				$td.setAttribute("id", "Difficulty" + i);
+				$td.setAttribute("class", "Difficulty");
 				$td.innerHTML = "0";
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
 				$td.setAttribute("class", "DifficultyMultiplier");
 				var $select = document.createElement('select');
-				$select.setAttribute("id", "DifficultyMultiplier" + i);
 				$select.setAttribute("onchange", "calculate();");
+				$select.setAttribute("id", "DifficultyMultiplier" + i);
 				$td.appendChild($select);
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "TimeNeeded");
 				$td.setAttribute("id", "TimeNeeded" + i);
+				$td.setAttribute("class", "TimeNeeded");
 				$td.innerHTML = "0";
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
 				$td.setAttribute("class", "ComponentA");
 				var $select = document.createElement('select');
-				$select.setAttribute("id", "ComponentA" + i);
 				$select.setAttribute("onchange", "calculate();");
+				$select.setAttribute("id", "ComponentA" + i);
 				$td.appendChild($select);
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
 				$td.setAttribute("class", "QtyA");
 				var $input = document.createElement('input');
-				$input.setAttribute("id", "QtyA" + i);
-				$input.setAttribute("value", "0");
-				$input.setAttribute("min", "-50");
-				$input.setAttribute("max", "50");
-				$input.setAttribute("onchange", "calculate();");
 				$input.readOnly = true;
+				$input.setAttribute("onchange", "calculate();");
+				$input.setAttribute("max", "50");
+				$input.setAttribute("min", "-50");
+				$input.setAttribute("value", "0");
+				$input.setAttribute("id", "QtyA" + i);
 				$td.appendChild($input);
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
 				$td.setAttribute("class", "ComponentB");
 				var $select = document.createElement('select');
-				$select.setAttribute("id", "ComponentB" + i);
 				$select.setAttribute("onchange", "calculate();");
+				$select.setAttribute("id", "ComponentB" + i);
 				$td.appendChild($select);
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
 				$td.setAttribute("class", "QtyB");
 				var $input = document.createElement('input');
-				$input.setAttribute("id", "QtyB" + i);
-				$input.setAttribute("value", "0");
-				$input.setAttribute("min", "-50");
-				$input.setAttribute("max", "50");
-				$input.setAttribute("onchange", "calculate();");
 				$input.readOnly = true;
+				$input.setAttribute("onchange", "calculate();");
+				$input.setAttribute("max", "50");
+				$input.setAttribute("min", "-50");
+				$input.setAttribute("value", "0");
+				$input.setAttribute("id", "QtyB" + i);
 				$td.appendChild($input);
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
 				$td.setAttribute("class", "TimeTaken");
 				var $input = document.createElement('input');
-				$input.setAttribute("id", "TimeTaken" + i);
-				$input.setAttribute("value", "0");
-				$input.setAttribute("min", "0");
-				$input.setAttribute("max", "20");
-				$input.setAttribute("onchange", "calculate();");
 				$input.readOnly = true;
+				$input.setAttribute("onchange", "calculate();");
+				$input.setAttribute("max", "20");
+				$input.setAttribute("min", "0");
+				$input.setAttribute("value", "0");
+				$input.setAttribute("id", "TimeTaken" + i);
 				$td.appendChild($input);
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "TotalMass");
 				$td.setAttribute("id", "TotalMass" + i);
+				$td.setAttribute("class", "TotalMass");
 				$td.innerHTML = "0";
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "Thrust");
 				$td.setAttribute("id", "Thrust" + i);
+				$td.setAttribute("class", "Thrust");
 				$td.innerHTML = "0";
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "ThrustNeeded");
 				$td.setAttribute("id", "ThrustNeeded" + i);
+				$td.setAttribute("class", "ThrustNeeded");
 				$td.innerHTML = "0";
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "TotalCost");
 				$td.setAttribute("id", "TotalCost" + i);
+				$td.setAttribute("class", "TotalCost");
 				$td.innerHTML = "0";
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "ExcessThrust");
 				$td.setAttribute("id", "ExcessThrust" + i);
+				$td.setAttribute("class", "ExcessThrust");
 				$td.innerHTML = "0";
 				$tr.appendChild($td);
 
 				var $td = document.createElement('td');
-				$td.setAttribute("class", "AvailableMass");
 				$td.setAttribute("id", "AvailableMass" + i);
+				$td.setAttribute("class", "AvailableMass");
 				$td.innerHTML = "infinite";
 				$tr.appendChild($td);
 
@@ -686,12 +686,10 @@
 				jQuery("#QtyB" + i).spinner();
 				jQuery("#TimeTaken" + i).spinner();
 			};
-			//jQuery(".break").toggle();
 		};
 
 		jQuery(document).ready(function() {
 			jQuery("button").click(function() {
-				//jQuery(".break").toggle();
 				jQuery(".Maneuver").toggle();
 				jQuery(".TotalMass").toggle();
 				jQuery(".Thrust").toggle();
@@ -701,7 +699,7 @@
 	</script>
 </head>
 
-<body onload="formReset(); buildTable(); fill('Origin', places); fill('ComponentA', equipment); fill('ComponentB', equipment); fill('DifficultyMultiplier', multiples);">
+<body onload="formReset(); buildTable(); fill('Origin', places); fill('ComponentA', equipment); fill('ComponentB', equipment); fill('DifficultyMultiplier', multiples);" onclick="calculate();">
 	<h1>Leaving Earth Mission Planner </h1>
 	<a href="https://rawgit.com/malkav73/LEMP/master/LeavingEarthPlanner.html">https://rawgit.com/malkav73/LEMP/master/LeavingEarthPlanner.html</a><br>
 	<a href="http://goo.gl/Qeh2F6">http://goo.gl/Qeh2F6</a><br>
@@ -716,24 +714,25 @@
 			<thead>
 				<tr>
 					<th class="FromTo" id="FromTo">From - To</th>
-					<th class="Maneuver" id="Maneuver" style=width:11em>Maneuver</th>
-					<th class="Difficulty" id="Difficulty" style=width:3em>Diff.</th>
-					<th class="DifficultyMultiplier" id="DifficultyMultiplier" style=width:3em>Diff. Mult.</th>
-					<th class="TimeNeeded" id="TimeNeeded" style=width:4em>Time Needed</th>
-					<th class="ComponentA" id="ComponentA" style=width:8em>Component A</th>
-					<th class="QtyA" id="QtyA" style=width:4em>Qty. A</th>
-					<th class="ComponentB" id="ComponentB" style=width:8em>Component B</th>
-					<th class="QtyB" id="QtyB" style=width:4em>Qty. B</th>
-					<th class="TimeTaken" id="TimeTaken" style=width:4em>Time Taken</th>
-					<th class="TotalMass" id="TotalMass" style=width:4em>Total Mass</th>
-					<th class="Thrust" id="Thrust" style=width:4em>Thrust</th>
-					<th class="ThrustNeeded" id="ThrustNeeded" style=width:4em>Thrust Needed</th>
-					<th class="TotalCost" id="TotalCost" style=width:4em>Total Cost</th>
-					<th class="ExcessThrust" id="ExcessThrust" style=width:4em>Excess Thrust</th>
-					<th class="AvailableMass" id="AvailableMass" style=width:5em>Available Mass</th>
+					<th class="Maneuver" id="Maneuver" style="width:11em">Maneuver</th>
+					<th class="Difficulty" id="Difficulty" style="width:3em">Diff.</th>
+					<th class="DifficultyMultiplier" id="DifficultyMultiplier" style="width:3em">Diff. Mult.</th>
+					<th class="TimeNeeded" id="TimeNeeded" style="width:4em">Time Needed</th>
+					<th class="ComponentA" id="ComponentA" style="width:8em">Component A</th>
+					<th class="QtyA" id="QtyA" style="width:4em">Qty. A</th>
+					<th class="ComponentB" id="ComponentB" style="width:8em">Component B</th>
+					<th class="QtyB" id="QtyB" style="width:4em">Qty. B</th>
+					<th class="TimeTaken" id="TimeTaken" style="width:4em">Time Taken</th>
+					<th class="TotalMass" id="TotalMass" style="width:4em">Total Mass</th>
+					<th class="Thrust" id="Thrust" style="width:4em">Thrust</th>
+					<th class="ThrustNeeded" id="ThrustNeeded" style="width:4em">Thrust Needed</th>
+					<th class="TotalCost" id="TotalCost" style="width:4em">Total Cost</th>
+					<th class="ExcessThrust" id="ExcessThrust" style="width:4em">Excess Thrust</th>
+					<th class="AvailableMass" id="AvailableMass" style="width:5em">Available Mass</th>
 				</tr>
 			</thead>
-			<tbody id="tbody" />
+			<tbody id="tbody">
+			</tbody>
 		</table>
 	</form>
 </body>
