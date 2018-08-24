@@ -567,8 +567,14 @@
 				if ($ComponentA.value == "Ion Thruster") {
 					thrustA *= $TimeTaken.value;
 				};
+				if ($ComponentA.value == "Ion Thruster (reuse)") {
+					thrustA *= $TimeTaken.value;
+				};
 				var thrustB = thrusts[indexB];
 				if ($ComponentB.value == "Ion Thruster") {
+					thrustB *= $TimeTaken.value;
+				};
+				if ($ComponentB.value == "Ion Thruster (reuse)") {
 					thrustB *= $TimeTaken.value;
 				};
 				var Thrust = (thrustA * $QtyA.value) + (thrustB * $QtyB.value);
